@@ -6,17 +6,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const console_1 = require("console");
 const chalk_1 = __importDefault(require("chalk"));
 class Logger extends console_1.Console {
-    constructor() {
+    constructor(opts) {
         super(process.stdout, process.stderr);
-    }
-    log(input, type = "INFO") {
-        this.log(input, type);
+        this.shardId = opts === null || opts === void 0 ? void 0 : opts.shardId;
     }
     info(input, type = "INFO") {
         if (type === "BLANK") {
             return this.log(chalk_1.default.hidden("-"));
         }
-        const mess = chalk_1.default.cyan("[INFO]" + (type ? "[" + type + "]" : "")) + ": " + input;
+        const mess = chalk_1.default.cyan(`[#${this.shardId || 0}]` + "[INFO]" + (type ? "[" + type + "]" : "")) + ": " + input;
         super.log(mess);
     }
     error(input, type) {

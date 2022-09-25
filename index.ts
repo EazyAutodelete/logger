@@ -2,15 +2,18 @@ import { Console } from "console";
 import chalk from "chalk";
 
 export default class Logger extends Console {
-  constructor() {
+  shardId: number | undefined;
+  constructor(opts: any) {
     super(process.stdout, process.stderr);
+
+    this.shardId = opts?.shardId;
   }
 
   info(input: string, type = "INFO"): void {
     if (type === "BLANK") {
       return this.log(chalk.hidden("-"));
     }
-    const mess = chalk.cyan("[INFO]" + (type ? "[" + type + "]" : "")) + ": " + input;
+    const mess = chalk.cyan(`[#${this.shardId || 0}]` + "[INFO]" + (type ? "[" + type + "]" : "")) + ": " + input;
     super.log(mess);
   }
 

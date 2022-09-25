@@ -1,7 +1,7 @@
 import { Console } from "console";
 export default class Logger extends Console {
-    constructor();
-    log(input: string, type?: string): void;
+    shardId: number | undefined;
+    constructor(opts: any);
     info(input: string, type?: string): void;
     error(input: string, type?: string): void;
     warn(input: string, type?: string): void;
