@@ -18,15 +18,15 @@ class Logger extends console_1.Console {
         super.log(mess);
     }
     error(input, type) {
-        const mess = chalk_1.default.bold.redBright("[ERRO]" + (type ? "[" + type + "]" : "")) + ": " + input;
+        const mess = chalk_1.default.bold.redBright(`[#${this.shardId || 0}]` + "[ERRO]" + (type ? "[" + type + "]" : "")) + ": " + input;
         super.error(mess);
     }
     warn(input, type) {
-        const mess = chalk_1.default.bold.yellow("[WARN]" + (type ? "[" + type + "]" : "")) + ": " + input;
+        const mess = chalk_1.default.bold.yellow(`[#${this.shardId || 0}]` + "[WARN]" + (type ? "[" + type + "]" : "")) + ": " + input;
         super.warn(mess);
     }
     debug(message) {
-        const mess = chalk_1.default.magenta("[DEBG]") + ": " + message;
+        const mess = chalk_1.default.magenta(`[#${this.shardId || 0}]` + "[DEBG]") + ": " + message;
         super.log(mess);
     }
     date(msTimeStamp = new Date().getTime()) {
@@ -38,6 +38,10 @@ class Logger extends console_1.Console {
         if (seconds.length === 1)
             seconds = `0${seconds}`;
         return `[ ${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()} - ${date.getHours()}:${minutes}:${seconds} ]`;
+    }
+    setShardId(id) {
+        this.shardId = id;
+        return this;
     }
 }
 exports.default = Logger;

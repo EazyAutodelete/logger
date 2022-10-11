@@ -1,7 +1,7 @@
 {
   "name": "@eazyautodelete/logger",
-  "version": "1.0.2",
-  "description": "logging",
+  "version": "1.0.3",
+  "description": "💾 Logger",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

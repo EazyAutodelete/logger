@@ -18,17 +18,19 @@ export default class Logger extends Console {
   }
 
   error(input: string, type?: string): void {
-    const mess = chalk.bold.redBright("[ERRO]" + (type ? "[" + type + "]" : "")) + ": " + input;
+    const mess =
+      chalk.bold.redBright(`[#${this.shardId || 0}]` + "[ERRO]" + (type ? "[" + type + "]" : "")) + ": " + input;
     super.error(mess);
   }
 
   warn(input: string, type?: string): void {
-    const mess = chalk.bold.yellow("[WARN]" + (type ? "[" + type + "]" : "")) + ": " + input;
+    const mess =
+      chalk.bold.yellow(`[#${this.shardId || 0}]` + "[WARN]" + (type ? "[" + type + "]" : "")) + ": " + input;
     super.warn(mess);
   }
 
   debug(message: string): void {
-    const mess = chalk.magenta("[DEBG]") + ": " + message;
+    const mess = chalk.magenta(`[#${this.shardId || 0}]` + "[DEBG]") + ": " + message;
     super.log(mess);
   }
 
@@ -44,5 +46,10 @@ export default class Logger extends Console {
     return `[ ${date.getFullYear()}.${
       date.getMonth() + 1
     }.${date.getDate()} - ${date.getHours()}:${minutes}:${seconds} ]`;
+  }
+
+  setShardId(id: number): Logger {
+    this.shardId = id;
+    return this;
   }
 }

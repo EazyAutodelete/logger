@@ -7,4 +7,5 @@ export default class Logger extends Console {
     warn(input: string, type?: string): void;
     debug(message: string): void;
     date(msTimeStamp?: number): string;
+    setShardId(id: number): Logger;
 }
