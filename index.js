@@ -9,24 +9,25 @@ class Logger extends console_1.Console {
     constructor(opts) {
         super(process.stdout, process.stderr);
         this.shardId = opts === null || opts === void 0 ? void 0 : opts.shardId;
+        this.clusterId = opts === null || opts === void 0 ? void 0 : opts.clusterId;
     }
     info(input, type = "INFO") {
         if (type === "BLANK") {
             return this.log(chalk_1.default.hidden("-"));
         }
-        const mess = chalk_1.default.cyan(`[#${this.shardId || 0}]` + "[INFO]" + (type ? "[" + type + "]" : "")) + ": " + input;
+        const mess = chalk_1.default.cyan(this._prefix() + "[INFO]" + (type ? "[" + type + "]" : "")) + ": " + input;
         super.log(mess);
     }
     error(input, type) {
-        const mess = chalk_1.default.bold.redBright(`[#${this.shardId || 0}]` + "[ERRO]" + (type ? "[" + type + "]" : "")) + ": " + input;
+        const mess = chalk_1.default.bold.redBright(this._prefix() + "[ERRO]" + (type ? "[" + type + "]" : "")) + ": " + input;
         super.error(mess);
     }
     warn(input, type) {
-        const mess = chalk_1.default.bold.yellow(`[#${this.shardId || 0}]` + "[WARN]" + (type ? "[" + type + "]" : "")) + ": " + input;
+        const mess = chalk_1.default.bold.yellow(this._prefix() + "[WARN]" + (type ? "[" + type + "]" : "")) + ": " + input;
         super.warn(mess);
     }
     debug(message) {
-        const mess = chalk_1.default.magenta(`[#${this.shardId || 0}]` + "[DEBG]") + ": " + message;
+        const mess = chalk_1.default.magenta(this._prefix() + "[DEBG]") + ": " + message;
         super.log(mess);
     }
     date(msTimeStamp = new Date().getTime()) {
@@ -38,6 +39,13 @@ class Logger extends console_1.Console {
         if (seconds.length === 1)
             seconds = `0${seconds}`;
         return `[ ${date.getFullYear()}.${date.getMonth() + 1}.${date.getDate()} - ${date.getHours()}:${minutes}:${seconds} ]`;
+    }
+    _prefix() {
+        return chalk_1.default.gray(`[Cluster #${this.clusterId || 0}][Shard #${this.shardId || 0}]`);
+    }
+    setClusterId(id) {
+        this.clusterId = id;
+        return this;
     }
     setShardId(id) {
         this.shardId = id;
