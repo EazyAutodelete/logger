@@ -15,19 +15,34 @@ class Logger extends console_1.Console {
         if (type === "BLANK") {
             return this.log(chalk_1.default.hidden("-"));
         }
+        if (type === "CLSTR" || type === "CLUSTER") {
+            return this.log(chalk_1.default.blue(this._prefix() + "[INFO]" + (type ? "[" + type + "]" : "")) + ": " + input);
+        }
+        if (type === "SHARD" || type === "SHARD") {
+            return this.log(chalk_1.default.greenBright(this._prefix() + "[INFO]" + (type ? "[" + type + "]" : "")) + ": " + input);
+        }
+        if (type === "DATA") {
+            return this.log(chalk_1.default.redBright(this._prefix() + "[INFO]" + (type ? "[" + type + "]" : "")) + ": " + input);
+        }
+        if (type === "MDULE" || type === "MDUL" || type === "MODULE") {
+            return this.log(chalk_1.default.magenta(this._prefix() + "[INFO]" + (type ? "[" + type + "]" : "")) + ": " + input);
+        }
+        if (type === "MASTER") {
+            return this.log(chalk_1.default.bold.yellow(this._prefix() + (type ? "[" + type + "]" : "")) + ": " + input);
+        }
         const mess = chalk_1.default.cyan(this._prefix() + "[INFO]" + (type ? "[" + type + "]" : "")) + ": " + input;
         super.log(mess);
     }
     error(input, type) {
-        const mess = chalk_1.default.bold.redBright(this._prefix() + "[ERRO]" + (type ? "[" + type + "]" : "")) + ": " + input;
+        const mess = chalk_1.default.bold.bgRedBright(this._prefix() + "[ERRO]" + (type ? "[" + type + "]" : "")) + ": " + input;
         super.error(mess);
     }
     warn(input, type) {
-        const mess = chalk_1.default.bold.yellow(this._prefix() + "[WARN]" + (type ? "[" + type + "]" : "")) + ": " + input;
+        const mess = chalk_1.default.bold.bgYellow(this._prefix() + "[WARN]" + (type ? "[" + type + "]" : "")) + ": " + input;
         super.warn(mess);
     }
     debug(message) {
-        const mess = chalk_1.default.magenta(this._prefix() + "[DEBG]") + ": " + message;
+        const mess = chalk_1.default.bgMagenta(this._prefix() + "[DEBG]") + ": " + message;
         super.log(mess);
     }
     date(msTimeStamp = new Date().getTime()) {
