@@ -59,7 +59,7 @@ export default class Logger {
             ? JSON.stringify(replaceBigInts(arg), null, 2)
             : (arg?.stack ?? arg?.toString?.() ?? arg);
 
-        return emojify(processedArg)
+        return emojify("" + processedArg)
           .split("\n")
           .filter(line => line.trim())
           .map((line, i, lines) => {
