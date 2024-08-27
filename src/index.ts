@@ -37,10 +37,13 @@ const colorFunctions = new Map([
 ]);
 
 export default class Logger {
+  private logLevel: number;
   private name?: string;
 
-  constructor(name?: string) {
+  constructor(name?: string, logLevel: number = 1) {
     this.name = name;
+
+    this.logLevel = logLevel;
   }
 
   private _log(level = 1, ...args: any[]) {
@@ -80,6 +83,8 @@ export default class Logger {
       .join("\n");
 
     const logMessage = [formattedMessage];
+
+    if (level < this.logLevel) return;
 
     switch (level) {
       case 0:
