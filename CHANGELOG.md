@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.1.5](https://github.com/EazyAutodelete/logger/compare/v1.1.4...v1.1.5) (2024-08-27)
+
+
+### Bug Fixes
+
+* add .log ([424a7b1](https://github.com/EazyAutodelete/logger/commit/424a7b15beb2f96b474d41df4bf130ff8f8e7ff8))
+
 ## [1.1.4](https://github.com/EazyAutodelete/logger/compare/v1.1.3...v1.1.4) (2024-08-22)
 
 
