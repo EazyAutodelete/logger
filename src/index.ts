@@ -43,7 +43,7 @@ export default class Logger {
     this.name = name;
   }
 
-  private log(level = 1, ...args: any[]) {
+  private _log(level = 1, ...args: any[]) {
     const color = colorFunctions.get(level) || noColor;
     const date = new Date();
     const dateString = `[${date.toLocaleDateString()}/${date.toLocaleTimeString()}]`;
@@ -83,7 +83,7 @@ export default class Logger {
 
     switch (level) {
       case 0:
-        return false && console.debug(...logMessage);
+        return console.debug(...logMessage);
       case 1:
         return console.info(...logMessage);
       case 2:
@@ -97,25 +97,29 @@ export default class Logger {
   }
 
   public debug(...args: LogArg[]) {
-    this.log(0, ...args);
+    this._log(0, ...args);
   }
 
   public error(...args: LogArg[]) {
-    this.log(3, ...args);
+    this._log(3, ...args);
   }
 
   public fatal(...args: LogArg[]) {
-    this.log(4, ...args);
+    this._log(4, ...args);
   }
 
   public info(...args: LogArg[]) {
-    this.log(1, ...args);
+    this._log(1, ...args);
+  }
+
+  public log(...args: LogArg[]) {
+    this._log(1, ...args);
   }
 
   public success(...args: LogArg[]) {
-    this.log(5, ...args);
+    this._log(5, ...args);
   }
   public warn(...args: LogArg[]) {
-    this.log(2, ...args);
+    this._log(2, ...args);
   }
 }
