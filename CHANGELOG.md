@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.1.7](https://github.com/EazyAutodelete/logger/compare/v1.1.6...v1.1.7) (2024-08-30)
+
+
+### Bug Fixes
+
+* **depth:** fix depth for replace Big Ints ([92c4648](https://github.com/EazyAutodelete/logger/commit/92c46483dda50d353ff1e018a14f6b07b9d554d6))
+
 ## [1.1.6](https://github.com/EazyAutodelete/logger/compare/v1.1.5...v1.1.6) (2024-08-27)
 
 
