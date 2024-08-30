@@ -1,15 +1,13 @@
 export default function replaceBigInts(obj: any): any {
-  if (obj instanceof Array) {
-    return obj.map(x => replaceBigInts(x));
-  } else if (obj instanceof Object) {
+  let depth = 100;
+  if (obj instanceof Array) return obj.map((x, i) => (i < 100 ? replaceBigInts(x) : "Array too deep to display"));
+  else if (obj instanceof Object) {
     const newObj: any = {};
     for (const key in obj) {
-      newObj[key] = replaceBigInts(obj[key]!);
+      depth++;
+      if (depth < 100) newObj[key] = replaceBigInts(obj[key]!);
     }
     return newObj;
-  } else if (typeof obj === "bigint") {
-    return "bigint:" + obj.toString() + "";
-  } else {
-    return obj;
-  }
+  } else if (typeof obj === "bigint") return obj.toString() + "n";
+  else return obj;
 }
