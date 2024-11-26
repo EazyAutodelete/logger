@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.1.8](https://github.com/EazyAutodelete/logger/compare/v1.1.7...v1.1.8) (2024-11-26)
+
+
+### Bug Fixes
+
+* **replaceBigInts:** set depth to 0 to fix not rendering objects ([ec0fa82](https://github.com/EazyAutodelete/logger/commit/ec0fa827f69159433d9055ce891f6a6b8b5e82f8))
+
 ## [1.1.7](https://github.com/EazyAutodelete/logger/compare/v1.1.6...v1.1.7) (2024-08-30)
 
 
