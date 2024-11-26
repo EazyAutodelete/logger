@@ -1,5 +1,5 @@
 export default function replaceBigInts(obj: any): any {
-  let depth = 100;
+  let depth = 0;
   if (obj instanceof Array) return obj.map((x, i) => (i < 100 ? replaceBigInts(x) : "Array too deep to display"));
   else if (obj instanceof Object) {
     const newObj: any = {};
