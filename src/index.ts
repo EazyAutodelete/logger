@@ -3,7 +3,17 @@ import { emojify } from "node-emoji";
 
 import replaceBigInts from "./replaceBigInts.js";
 
-export type LogArg = Error | bigint | boolean | number | object | string;
+export type LogArg =
+  | { [key: string]: any }
+  | Error
+  | any[]
+  | bigint
+  | boolean
+  | null
+  | number
+  | object
+  | string
+  | undefined;
 
 export const LogLevels = {
   0: "Debug",
