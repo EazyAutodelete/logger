@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.1.9](https://github.com/EazyAutodelete/logger/compare/v1.1.8...v1.1.9) (2024-12-02)
+
+
+### Bug Fixes
+
+* **types:** adjust LogArg type ([fd4143a](https://github.com/EazyAutodelete/logger/commit/fd4143a17b13ed958023ff4fd64d3c333c3ca040))
+
 ## [1.1.8](https://github.com/EazyAutodelete/logger/compare/v1.1.7...v1.1.8) (2024-11-26)
 
 
